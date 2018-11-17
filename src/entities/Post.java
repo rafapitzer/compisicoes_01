@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Post {
 	
-	SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+	private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 	
 	private Date moment;
 	private String title;
@@ -62,15 +62,23 @@ public class Post {
 		return comments;
 	}
 
+	public void addComment(Comment comment) {
+		comments.add(comment);
+	}
+	
+	public void removeComment(Comment comment) {
+		comments.remove(comment);
+	}
+	
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
-		sb.append( "title = " + title + "/n" );
-		sb.append( like + "likes - " );
-		sb.append( sdf.format( moment ) + "/n");
-		sb.append( content + "/n");
-		sb.append( "Comments: /n");
+		sb.append( "title = " + title + "\n" );
+		sb.append( like + " likes - " );
+		sb.append( sdf.format( moment ) + "\n");
+		sb.append( content + "\n");
+		sb.append( "Comments: \n");
 		for ( Comment c : comments ) {
-			sb.append( c.getText() + "/n");
+			sb.append( c.getText() + "\n");
 		}
 		return sb.toString();
 	}
